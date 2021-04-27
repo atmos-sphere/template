@@ -1,9 +1,28 @@
-import { css } from "styled-components";
+import { css, DefaultTheme } from "styled-components";
 
-const theme = {
-  colors: {},
+const purple = ({ opacity = 1 } = {}) => `rgba(39, 0, 84, ${opacity})`;
+const blue = ({ opacity = 1 } = {}) => `hsla(240, 100%, 20%, ${opacity})`;
 
-  fonts: {},
+const theme: DefaultTheme = {
+  colors: {
+    sqlRed: "hsl(0, 100%, 30%)",
+    preProBlue: blue(),
+    seeThroughPurple: purple({ opacity: 0.623 }),
+    createPurple: purple,
+    createBlue: blue,
+  },
+
+  fonts: {
+    B612: `
+      "B612", Menlo, Monaco,
+      Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono,
+      Courier New, monospace
+    `,
+    IBMPlexSerif: `
+      IBM Plex Serif
+    `,
+  },
 
   shadows: {
     sparse: "0px 11px 67px -4px rgba(0, 0, 0, 0.6)",
@@ -15,16 +34,18 @@ const theme = {
   },
 
   mixins: {
-    unselectable: ({ pointerEvents = false } = {}) => css`
-      ${!pointerEvents && "pointer-events: none;"}
-      user-select: none;
-      -moz-user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-    `,
+    unselectable: ({
+      pointerEvents = false,
+    }: { pointerEvents?: boolean } = {}) =>
+      css`
+        ${!pointerEvents && "pointer-events: none;"}
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      `.toString(),
   },
 };
 
 export default theme;
-export { theme };

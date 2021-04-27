@@ -1,13 +1,13 @@
 import { ServerStyleSheets as ServerStyleSheetsMUI } from "@material-ui/core";
-import { ServerStyleSheet as ServerStyleSheetsSC } from "styled-components";
 import Document, {
-  Html,
+  DocumentContext,
   Head,
+  Html,
   Main,
   NextScript,
-  DocumentContext,
 } from "next/document";
 import { Children } from "react";
+import { ServerStyleSheet as ServerStyleSheetsSC } from "styled-components";
 
 /**
  * This `_document.js` includes some code for fixing the "className did not
